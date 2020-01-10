@@ -71,6 +71,7 @@
         <nav>
                 <div class="nav-wrapper grey darken-4">
                   <a href="#" class="brand-logo center"><img src="img/logo1.png" style="width:60px;height:60px;"></img></a>
+                  <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="launch.html">Launch</a></li>
                     <li><a href="tele.html">Telemetry</a></li>
@@ -78,6 +79,11 @@
                   </ul>
                 </div>
               </nav>
+              <ul class="sidenav" id="mobile-menu">
+                <li><a href="launch.html">Launch</a></li>
+                <li><a href="tele.html">Telemetry</a></li>
+                <li><a href="controls.html">Controls</a></li>
+              </ul>
         <div class="container">
             
 
@@ -130,4 +136,10 @@
         </div>
 
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, {});
+        });
+    </script>
 </html>
