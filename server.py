@@ -80,13 +80,42 @@ class Serv(BaseHTTPRequestHandler):
                 self.send_header('Content-type','font/woff2')
                 self.end_headers()
                 self.wfile.write(file_to_open)
+
+            #Do Actions
+            if self.path.endswith("launch1.do"):
+                file_to_open = "Launched the control-system"
+                self.send_response(200)
+                self.send_header('Content-type','text/html')
+                self.end_headers()
+                self.wfile.write(bytes(file_to_open, 'utf-8'))
+                print("Do roslaunch vortex manta.launch")
+            if self.path.endswith("launch2.do"):
+                file_to_open = "Enabled Xbox controller"
+                self.send_response(200)
+                self.send_header('Content-type','text/html')
+                self.end_headers()
+                self.wfile.write(bytes(file_to_open, 'utf-8'))
+                print("Do roslaunch joystick_interface joystick_interface.lauch")
+            if self.path.endswith("launch3.do"):
+                file_to_open = "Thrusters Armed"
+                self.send_response(200)
+                self.send_header('Content-type','text/html')
+                self.end_headers()
+                self.wfile.write(bytes(file_to_open, 'utf-8'))
+                print("Do roslaunch pub /mcu_arm std/msgs/String \"data: 'arm'\"")
+            if self.path.endswith("launch4.do"):
+                file_to_open = "Thrusters Disarmed"
+                self.send_response(200)
+                self.send_header('Content-type','text/html')
+                self.end_headers()
+                self.wfile.write(bytes(file_to_open, 'utf-8'))
+                print("Do roslaunch pub /mcu_arm std/msgs/String \"data: 'kev'\"")
         except:
             file_to_open = "File not found:" + self.path
             self.send_response(404)
             self.end_headers()
             self.wfile.write(bytes(file_to_open, 'utf-8'))
-        #self.end_headers()
-        #self.wfile.write(bytes(file_to_open, 'utf-8'))
+        #end
 
-httpd = HTTPServer(('localhost', 8080), Serv)
+httpd = HTTPServer(('localhost', 80), Serv) #Change IP and port as needed.
 httpd.serve_forever()

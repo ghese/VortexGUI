@@ -71,7 +71,7 @@
         
         <nav>
                 <div class="nav-wrapper grey darken-4">
-                  <a href="#" class="brand-logo center"><img src="img/logo1.png" style="width:60px;height:60px;"></img></a>
+                  <a href="/" class="brand-logo center"><img src="img/logo1.png" style="width:60px;height:60px;"></img></a>
                   <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="launch.html">Launch</a></li>
@@ -92,8 +92,11 @@
                     <div class="col s12 m12">
                         <div class="card hoverable trans tblack">
                             <div class="card-content">
-                                <h4>Manta GUI</h4>
-                                A web-GUI for Manta providing users with an interface to launch, check sensors and control Manta during debugging stages.
+                                <h4>Launch</h4>
+                                <div id="div_status"></div>
+                                <p>1. Start the control-system: <br><button class="waves-effect waves-light btn" id="button_lauch1">Start</button></p><br>
+                                <p>2. Enable Joystick (optional): <br> First connect the Xbox controller, then press <br><button class="waves-effect waves-light btn" id="button_lauch2">Connect Controller</button></p><br>
+                                <p>3. Arm/Disarm the thrusters (optional): <br> <b>Warning! </b>The thrusters will start spinning as soon as they are armed. Make sure no one is touching them when you arm the thrusters. <br><button class="waves-effect waves-light btn" id="button_lauch3">Arm</button> <button class="waves-effect waves-light btn" id="button_lauch4">Disarm</button></p>
                             </div>
                         </div>
                     </div>
@@ -141,6 +144,20 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems, {});
+        });
+        $(document).ready(function(){
+            $("#button_lauch1").click(function(){
+                $("#div_status").load("launch1.do");
+            });
+            $("#button_lauch2").click(function(){
+                $("#div_status").load("launch2.do");
+            });
+            $("#button_lauch3").click(function(){
+                $("#div_status").load("launch3.do");
+            });
+            $("#button_lauch4").click(function(){
+                $("#div_status").load("launch4.do");
+            });
         });
     </script>
 </html>
