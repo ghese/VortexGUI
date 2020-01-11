@@ -8,6 +8,12 @@ class Serv(BaseHTTPRequestHandler):
 
         if self.path == '/':
             self.path = '/index.html'
+        if self.path == '/launch':
+            self.path = '/launch.html'
+        if self.path == '/controls':
+            self.path = '/controls.html'
+        if self.path == '/tele':
+            self.path = '/tele.html'
         try:
             if self.path.endswith(".html"):
                 abs_file_path = os.path.join(script_dir, self.path[1:])
